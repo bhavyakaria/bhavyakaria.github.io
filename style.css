@@ -1,6 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Indie+Flower);
-@import url(http://weloveiconfonts.com/api/?family=brandico);
-@import url(http://weloveiconfonts.com/api/?family=entypo);
 @import url(https://fonts.googleapis.com/css?family=Raleway:=300);
 
 html,body{
@@ -30,10 +28,6 @@ header{
 .title h1{
 	font-size: 85px;
 	margin: 0;
-}
-
-.title span{
-	color: white;
 }
 
 .title h4{
@@ -68,7 +62,9 @@ header{
 	border: 1px solid black;
 }
 
-@media (max-width: 480px) {
+
+
+@media (max-width: 460px) {
     
     .title h1{
 		font-size: 60px;
@@ -76,19 +72,24 @@ header{
 	}
 
 	header{
-		background-image: url("Images/bk1.jpg");
-		height: 320px;
-		width: 480px;
+		background-image: url("Images/vert-bk.jpg");
+		height: 100vh;
+		background-size: cover;
 	}
 
-	.title{
-		height: 320px;
+	.title h4{
+		margin-top: 0;
+		font-size: 12px;
+		font-weight: 500;
 	}
+	
 }
 
-
-
 /*------------------------About Us----------------------------*/
+#abouts{
+	transition: all 0.4s;
+}
+
 .About{
 	height: 380px;
 	background-color: black;
@@ -101,7 +102,7 @@ header{
 	margin: 0;
 	font-family: 'Raleway',Futura Bk BT, Helvetica;
 	font-weight: 300;
-	padding-top: 40px;
+	padding-top: 60px;
 	text-align: center;
 }
 
@@ -122,16 +123,20 @@ header{
 	margin-right: auto;
 }
 
-@media ( max-width: 480px){
+@media ( max-width: 460px){
 
 	.About{
 		height: 285px;
-		width: 480px;
+		width: auto;
+	}
+
+	.About h1{
+		padding-top: 40px;
 	}
 
 	.About p{
 		font-size: 14px;
-		width: 480px;
+		width: 400px;
 	}
 }
 
@@ -185,6 +190,19 @@ progress::-webkit-progress-value{
 	background-color: black;
 	color:white;
 }
+
+@media (max-width: 460px) {
+	.Skills{
+		width: 320px;
+	}
+
+	progress{
+		border: 0;
+		height: 15px;
+		width: 300px;
+	}
+}
+
 
 /*-----------------Skills End-----------------*/
 
@@ -266,10 +284,6 @@ progress::-webkit-progress-value{
 	color: white;
 }
 
-.wrapper button a:hover{
-	color: white;
-}
-
 .text_area{
 	color: #fff;
 	width: 100%;
@@ -334,77 +348,46 @@ progress::-webkit-progress-value{
 	color: white;
 }
 
+/*---------------------Social Media------------------------*/
+
 .SocialMedia{
 	height: 150px;
 	background-color: black;
+	margin: 0 auto;
 }
 
-ul li{
-	display: inline-block;
-	margin-bottom: 0;
-	height: 150px;
-}
-.box a{
-	margin: 0 0 0 0 ;
-	height: 150px;
+.BigBox{
+	width: 400px;
+	margin: auto;
 }
 
 .box{
-	line-height: 150px;
-	margin-top: 0;
-	margin-bottom: 0;
-	width: 70%;
-	margin-left: auto;
-	margin-right: auto;
-	display: flex;
-    justify-content: space-between;
-    vertical-align: middle;
+	padding-top: 40px;
+	width: 100px;
+	height: 100px;
+	float: left;
 }
 
-[class*="brandico-facebook"]:before {
-  font-family: 'brandico', sans-serif;
-  font-size: 50px;
-  color: #3b5998;
+.fb,.twitter{fill:#FFFFFF;}
+
+.st1{fill:#000;}
+
+a svg:hover .fbcircle{
+	fill: #3b5998;
 }
 
-[class*="brandico-twitter-bird"]:before {
-  font-family: 'brandico', sans-serif;
-  font-size: 50px;
-  color: #0084b4;
+a svg:hover .twcircle{
+	fill: #00aced;
 }
 
-[class*="brandico-instagram"]:before {
-  font-family: 'brandico', sans-serif;
-  font-size: 50px;
-  color: #125688;
+a svg:hover .icircle{
+	fill: #125688;
 }
 
-[class*="entypo-"]:before {
-  font-family: 'entypo', sans-serif;
-  font-size: 50px;
-  color: #1769ff;
+a svg:hover .lcircle{
+	fill: #0077b5;
 }
 
-@media (max-width: 480px){
-	.Contact{
-		padding-top: 20px;
-	}
-
-
-	[class*="brandico-facebook"]:before {
-	  font-size: 40px;
-	}
-
-	[class*="brandico-twitter-bird"]:before {
-	  font-size: 40px;
-	}
-
-	[class*="brandico-instagram"]:before {
-	  font-size: 40px;
-	}
-
-	[class*="entypo-"]:before {
-	  font-size: 40px;
-	}
-} 
-
+a{
+	text-decoration: none;
+}

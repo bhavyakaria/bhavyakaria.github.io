@@ -24,6 +24,8 @@ header{
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	transform-style: preserve-3d;
+	transform: perspective(800px);
 }
 .title h1{
 	font-size: 85px;
@@ -37,6 +39,20 @@ header{
 	font-size: 15px;
 	margin-top: 5px;
 	margin-bottom: 5px;
+}
+
+.title h1, .title h4{
+	transition: all 0.8s ease;
+}
+
+.title.hidden h1{
+	opacity: 0;
+	transform: translate3d(0, 0, 400px) rotateY(-40deg);
+}
+
+.title.hidden h4{
+	opacity: 0;
+	transform: translate3d(0, 0, 400px) rotateY(40deg);
 }
 
 .title button{
@@ -64,10 +80,10 @@ header{
 
 
 
-@media (max-width: 460px) {
-    
+@media (max-width: 480px) {
+
     .title h1{
-		font-size: 60px;
+		font-size: 40px;
 		margin: 0;
 	}
 
@@ -82,7 +98,7 @@ header{
 		font-size: 12px;
 		font-weight: 500;
 	}
-	
+
 }
 
 /*------------------------About Us----------------------------*/
@@ -90,14 +106,16 @@ header{
 	transition: all 0.4s;
 }
 
-.About{
+.about{
 	height: 380px;
 	background-color: black;
 	margin: 0;
 	color: white;
+	transform-style: preserve-3d;
+	transform: perspective(800px);
 }
 
-.About h1{
+.about h1{
 	font-size: 28px;
 	margin: 0;
 	font-family: 'Raleway',Futura Bk BT, Helvetica;
@@ -106,7 +124,7 @@ header{
 	text-align: center;
 }
 
-.About h4{
+.about h4{
 	font-size: 18px;
 	font-style: normal;
 	font-family: 'Raleway',Futura Bk BT, Helvetica;
@@ -115,7 +133,7 @@ header{
 	text-align: center;
 }
 
-.About p{
+.about p{
 	font-size: 20px;
 	text-align: center;
 	width: 800px;
@@ -123,18 +141,40 @@ header{
 	margin-right: auto;
 }
 
-@media ( max-width: 460px){
+.about h1, .about h4, .about p{
+	transition: all 0.8s ease;
+}
 
-	.About{
+.about.hidden h1{
+	opacity: 0;
+	transform: translate3d(0, 0, 400px) rotateY(-40deg);
+}
+
+.about.hidden h4{
+	opacity: 0;
+	transform: translate3d(0, 0, 400px) rotateY(40deg);
+}
+
+.about.hidden p{
+	opacity: 0;
+	transform: translate3d(0, 0, 400px) rotateY(40deg);
+}
+
+
+
+
+@media ( max-width: 480px){
+
+	.about{
 		height: 285px;
 		width: auto;
 	}
 
-	.About h1{
+	.about h1{
 		padding-top: 40px;
 	}
 
-	.About p{
+	.about p{
 		font-size: 14px;
 		width: 400px;
 	}
@@ -190,6 +230,20 @@ progress::-webkit-progress-value{
 	background-color: black;
 	color:white;
 }
+
+.skills-h1{
+	transform-style: preserve-3d;
+	transform: perspective(800px);
+}
+.skills-h1 h1{
+	transition: all 0.8s ease;
+}
+
+.skills-h1.hidden h1{
+	opacity: 0;
+	transform: translate3d(0, 0, 400px) rotateY(-40deg);
+}
+
 
 @media (max-width: 460px) {
 	.Skills{
@@ -310,7 +364,7 @@ progress::-webkit-progress-value{
     .Portfolio{
     	height: 1680px;
     }
-    
+
 
 }
 

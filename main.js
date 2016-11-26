@@ -53,3 +53,17 @@ function lrotateb(){
 			transformOrigin: '50% 50%'
 	});
 }
+
+$(window).bind("load", function() {
+    var aboutEl = $('div.about'),
+        aboutElOffset = aboutEl.offset().top/2,
+        adocumentEl = $(document);
+
+    adocumentEl.on('scroll', function() {
+        if ( adocumentEl.scrollTop() > aboutElOffset && aboutEl.hasClass('hidden') )
+			aboutEl.removeClass('hidden');
+    });
+
+    $('div.title').fadeIn(1000).removeClass('hidden');
+
+});

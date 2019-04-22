@@ -1,0 +1,28 @@
+# Dependencies
+markdown:         redcarpet
+highlighter:      false
+plugins:          [jekyll-paginate, jekyll-gist]
+
+# Permalinks
+# permalink:        pretty
+# relative_permalinks: true
+
+
+# Setup
+title:            'Bhavya Karia'
+tagline:          'Bhavya Karia'
+description:      'Currently developing useful products at Myrsa'
+url:              http://hyde.getpoole.com
+baseurl:          /
+
+author:
+  name:           'Bhavya Karia'
+  url:            https://twitter.com/bhavyankaria
+
+paginate:         5
+
+# Custom vars
+version:          2.1.0
+
+github:
+  repo:           https://github.com/bhavyakaria

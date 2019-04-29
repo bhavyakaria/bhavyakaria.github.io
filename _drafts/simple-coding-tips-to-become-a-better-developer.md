@@ -22,4 +22,8 @@ When you have 2-3 conditions, then both will work and you won't see any major di
 
 If you need an in-depth info on why you should use switch then you can checkout this question on StackOverflow.
 
->Sometimes it takes 10 years to just get that 1 year which will changes your life. 
+>Sometimes it takes 10 years to just get that 1 year which will changes your life.
+
+### 2: null vs empty object
+Many a times people confuse that null and empty are both same but they are not. Null means an object has not been initailized whereas an empty means the object is empty. When using `null`, we have to be careful of the NullPointerException.
+

@@ -27,3 +27,5 @@ If you need an in-depth info on why you should use switch then you can checkout 
 ### 2: null vs empty object
 Many a times people confuse that null and empty are both same but they are not. Null means an object has not been initailized whereas an empty means the object is empty. When using `null`, we have to be careful of the NullPointerException.
 
+### 3: Choose appropiate data structure
+The choice of data structure effects the performance of the program/software. So, select them carefully. There are various scenarious where a list and array both will do but choosing one over the other will greatly affect the performance.

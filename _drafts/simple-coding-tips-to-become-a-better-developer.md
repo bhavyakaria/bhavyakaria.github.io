@@ -29,3 +29,20 @@ Many a times people confuse that null and empty are both same but they are not. 
 
 ### 3: Choose appropiate data structure
 The choice of data structure effects the performance of the program/software. So, select them carefully. There are various scenarious where a list and array both will do but choosing one over the other will greatly affect the performance.
+
+### 4: boxing and unboxing
+Converting a primitive value into an object of theh corresponding wrapper class is called boxing/autoboxing. Whereas converting an object of a wrapper type to its corresponding primitive value is called unboxing.
+
+**Boxing example:**
+```java
+int x = 10;
+Integer y = x;
+```
+
+**Unboxing example:**
+```java
+Integer x = 10;
+int y = x;
+```
+ 
+ It is generally adviced to use unboxed values compared to boxed values both in terms of performance and memory space.

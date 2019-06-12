@@ -83,7 +83,7 @@ class Car{
 ```
 <p style="text-align: center; font-style: italic; font-size: 14px;">Dependency injection(DI) Example</p>
 
-##### So now its the dependency injection’s responsibility to:
+#### So now its the dependency injection’s responsibility to:
 
 1. Create the objects
 2. Know which classes require those objects

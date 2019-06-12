@@ -7,13 +7,13 @@
 
 	    {% include sidebar.html %}
 
-	    <div class="content container">
+	    <div class="content">
 			<header>
 		    	<nav>
 		    		<ul class="navigation">
 						<li><a href="/" class="{% if page.url == '/' %}current{% endif %}">Blogs</a></li>
 		    			<li><a href="/projects.html" class="{% if page.url == '/projects.html' %}current{% endif %}">Projects</a></li>
-		    			<li><a href="/design.html" class="{% if page.url == '/design.html' %}current{% endif %}">UI/UX</a></li>
+		    			<li><a href="/design.html" class="{% if page.url == '/design.html' %}current{% endif %}">Designs</a></li>
 		    		</ul>
 		    	</nav>
 		    </header>
@@ -23,6 +23,9 @@
     		<!-- <footer class="foot-note">
     			Theme By: <a href="https://github.com/poole/hyde#license">Hyde</a>
     		</footer> -->
-    	</div>
+			</div>
+			
+			{% include footer.html %}
+
   	</body>
 </html>

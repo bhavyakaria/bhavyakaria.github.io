@@ -96,7 +96,11 @@ h2 {
 }
 h3 {
   margin-top: 1.5rem;
-  font-size: 1.25rem;
+  font-size: 25px;
+  line-height: 1.5;
+  font-weight: 700;
+
+}
 }
 h4, h5, h6 {
   margin-top: 1rem;
@@ -129,11 +133,11 @@ dd {
 
 /* Misc */
 hr {
-  position: relative;
-  margin: 1.5rem 0;
-  border: 0;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #fff;
+  position: relative !important;
+  margin: 1.5rem 0 !important;
+  border: 0 !important;
+  border-top: 1px solid #eee !important;
+  border-bottom: 1px solid #fff !important;
 }
 
 abbr {
@@ -150,7 +154,7 @@ abbr[title] {
 /* Code */
 code,
 pre {
-  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-family: Menlo, Monaco, "Courier New", monospace !important;
 }
 code {
   padding: .25em .5em;
@@ -338,6 +342,10 @@ tbody tr:nth-child(odd) th {
 .post-title,
 .post-title a {
   color: #303030;
+  line-height: 1.25;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Lato";
 }
 .page-title,
 .post-title {

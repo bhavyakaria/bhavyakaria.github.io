@@ -3,7 +3,7 @@ layout: post
 title: Learning Android Development the Hard Way
 ---
 
-
+**_This article has been published in ProAndroidDev Publication on [Medium]. Link to the article is [here][6]._**
 
 ### TL;DR: For the lazy !
 
@@ -143,6 +143,7 @@ When you have just started out learning, you come across various tutorials and v
 [3]: https://github.com/aritraroy/UltimateAndroidReference
 [4]: https://github.com/bhavyakaria/Android
 [5]: https://lab.github.com/courses?tag=Git
+[6]: https://proandroiddev.com/learning-android-development-the-hard-way-1a8358ac1186
 
 [1]: https://source.android.com/source/code-style.html
 [2]: https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md

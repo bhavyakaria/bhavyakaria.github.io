@@ -247,6 +247,7 @@ nav {
 .content {
   padding-top:    4rem;
   /* padding-bottom: 4rem; */
+  margin: 0 15px;
 }
 
 @media (min-width: 48em) {

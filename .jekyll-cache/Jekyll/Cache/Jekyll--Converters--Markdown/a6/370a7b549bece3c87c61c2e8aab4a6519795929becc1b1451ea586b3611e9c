@@ -1,0 +1,151 @@
+I"{*<p><strong><em>This article has been published in FreeCodeCamp Publication on <a href="https://medium.com/">Medium</a>. Link to the article is <a href="https://medium.freecodecamp.org/a-quick-intro-to-dependency-injection-what-it-is-and-when-to-use-it-7578c84fa88f">here</a>.</em></strong></p>
+
+<h3 id="introduction">Introduction</h3>
+
+<blockquote>
+  <p><em>In software engineering, <strong>dependency injection</strong> is a technique whereby one object (or static method) supplies the dependencies of another object. A dependency is an object that can be used (a service).</em></p>
+</blockquote>
+
+<p>That’s the Wikipedia definition but still, but it’s not particularly easy to understand. So let’s understand it better.</p>
+
+<p>Before understanding what it means in programming, let’s first see what it means in general as it will help us understand the concept better.</p>
+
+<p>Dependency or dependent means relying on something for support. Like if I say we are relying too much on mobile phones than it means we are dependent on them.</p>
+
+<p>So before getting to <a href="https://en.wikipedia.org/wiki/Dependency_injection">dependency injection</a>, first let’s understand what a dependency in programming means.</p>
+
+<p>When class A uses some functionality of class B, then its said that class A has a dependency of class B.</p>
+
+<p><img src="/blog_images/1-dependency-injection/its_dependency.jpg" alt="alt text" title="It's a Dependency!" /></p>
+
+<p>In Java, before we can use methods of other classes, we first need to create the object of that class (i.e. class A needs to create an instance of class B).</p>
+
+<p>So, transferring the task of creating the object to someone else and directly using the dependency is called dependency injection.</p>
+
+<p><img src="/blog_images/1-dependency-injection/comics_story.png" alt="alt text" title="What if code could speak?" /></p>
+
+<h3 id="why-should-i-use-dependency-injection">Why should I use dependency injection?</h3>
+
+<p>Let’s say we have a car class which contains various objects such as wheels, engine, etc.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Car</span><span class="o">{</span>
+  <span class="kd">private</span> <span class="nc">Wheels</span> <span class="n">wheel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MRFWheels</span><span class="o">();</span>
+  <span class="kd">private</span> <span class="nc">Battery</span> <span class="n">battery</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ExcideBattery</span><span class="o">();</span>
+  <span class="o">...</span>
+  <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p style="text-align: center; font-style: italic; font-size: 14px;">Without dependency injection(DI)</p>
+
+<p>Here the car class is responsible for creating all the dependency objects. Now, what if we decide to ditch MRFWheels in the future and want to use Yokohama Wheels?</p>
+
+<p>We will need to recreate the car object with a new Yokohama dependency. But when using dependency injection (DI), we can change the Wheels at runtime (because dependencies can be injected at runtime rather than at compile time).</p>
+
+<p>You can think of DI as the middleman in our code who does all the work of creating the preferred wheels object and providing it to the Car class.</p>
+
+<p>It makes our Car class independent from creating the objects of Wheels, Battery, etc.</p>
+
+<h4 id="there-are-basically-three-types-of-dependency-injection">There are basically three types of dependency injection:</h4>
+
+<ol>
+  <li><strong>constructor injection</strong>: the dependencies are provided through a class constructor.</li>
+  <li><strong>setter injection</strong>: the client exposes a setter method that the injector uses to inject the dependency.</li>
+  <li><strong>interface injection</strong>: the dependency provides an injector method that will inject the dependency into any client passed to it. Clients must implement an interface that exposes a <a href="https://en.wikipedia.org/wiki/Mutator_method">setter method</a> that accepts the dependency.</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Car</span><span class="o">{</span>
+  <span class="kd">private</span> <span class="nc">Wheels</span> <span class="n">wheel</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">Battery</span> <span class="n">battery</span><span class="o">;</span>
+  
+  <span class="cm">/*Somewhere in our codebase we instatiate the objects required by this class.
+    There are two methods for implementing DI:
+    1. Constructor based
+    2. Setter based
+  */</span>
+  
+  <span class="c1">// Constructor Based</span>
+  <span class="nc">Car</span><span class="o">(</span><span class="nc">Wheel</span> <span class="n">wh</span><span class="o">,</span> <span class="nc">Battery</span> <span class="n">bt</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">wh</span> <span class="o">=</span> <span class="n">wh</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">bt</span> <span class="o">=</span> <span class="n">bt</span><span class="o">;</span>
+  <span class="o">}</span>
+  
+  <span class="c1">// Setter Based</span>
+  <span class="kt">void</span> <span class="nf">setWheel</span><span class="o">(</span><span class="nc">Wheel</span> <span class="n">wh</span><span class="o">){</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">wh</span> <span class="o">=</span> <span class="n">wh</span><span class="o">;</span>
+  <span class="o">}</span>
+  <span class="o">...</span>  
+  <span class="o">...</span>
+  <span class="c1">// Rest of code  </span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p style="text-align: center; font-style: italic; font-size: 14px;">Dependency injection(DI) Example</p>
+
+<h4 id="so-now-its-the-dependency-injections-responsibility-to">So now its the dependency injection’s responsibility to:</h4>
+
+<ol>
+  <li>Create the objects</li>
+  <li>Know which classes require those objects</li>
+  <li>And provide them all those objects</li>
+</ol>
+
+<p>If there is any change in objects, then DI looks into it and it should not concern the class using those objects. This way if the objects change in the future, then its DI’s responsibility to provide the appropriate objects to the class.</p>
+
+<h3 id="inversion-of-control-the-concept-behind-di">Inversion of control —the concept behind DI</h3>
+
+<p>This states that a class should not configure its dependencies statically but should be configured by some other class from outside.</p>
+
+<p>It is the fifth principle of S.O.L.I.D — the five basic principles of object-oriented programming and design by Uncle Bob — which states that a class should depend on abstraction and not upon concretions (in simple terms, hard-coded).</p>
+
+<p>According to the principles, a class should concentrate on fulfilling its responsibilities and not on creating objects that it requires to fulfill those responsibilities. And that’s where dependency injection comes into play: it provides the class with the required objects.</p>
+
+<p><em><strong>Note: If you want to learn about SOLID principles by Uncle Bob then you can head to this <a href="https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design#toc-single-responsibility-principle">link</a>.</strong></em></p>
+
+<h3 id="benefits-of-using-di">Benefits of using DI</h3>
+
+<ol>
+  <li>Helps in Unit testing.</li>
+  <li>Boiler plate code is reduced, as initializing of dependencies is done by the injector component.</li>
+  <li>Extending the application becomes easier.</li>
+  <li>Helps to enable loose coupling, which is important in application programming.</li>
+</ol>
+
+<h3 id="disadvantages-of-di">Disadvantages of DI</h3>
+
+<ol>
+  <li>It’s a bit complex to learn, and if overused can lead to management issues and other problems.</li>
+  <li>Many compile time errors are pushed to run-time.</li>
+  <li>Dependency injection frameworks are implemented with reflection or dynamic programming. This can hinder use of IDE automation, such as “find references”, “show call hierarchy” and safe refactoring.</li>
+</ol>
+
+<p>You can implement dependency injection on your own (Pure Vanilla) or use third-party libraries or frameworks.</p>
+
+<h3 id="libraries-and-frameworks-that-implement-di">Libraries and Frameworks that implement DI</h3>
+<ul>
+  <li><a href="https://www.tutorialspoint.com/spring/spring_dependency_injection.htm">Spring</a> (Java)</li>
+  <li><a href="https://github.com/google/guice">Google Guice</a> (Java)</li>
+  <li><a href="https://square.github.io/dagger/">Dagger</a> (Java and Android)</li>
+  <li><a href="https://github.com/castleproject/Windsor">Castle Windsor</a> (.NET)</li>
+  <li><a href="https://www.microsoft.com/en-us/download/details.aspx?id=39944">Unity</a> (.NET)</li>
+  <li><a href="https://di-ninja.github.io/di-ninja/">Di-Ninja</a> (Javascript)</li>
+  <li><a href="https://github.com/nfroidure/knifecycle">knifecycle</a> (Javascript)</li>
+</ul>
+
+<p><strong>To learn more about dependency injection, you can check out the below resources:</strong></p>
+
+<p><a href="https://www.journaldev.com/2394/java-dependency-injection-design-pattern-example-tutorial">Java Dependency Injection — DI Design Pattern Example Tutorial — JournalDev</a></p>
+
+<p><a href="https://www.vogella.com/tutorials/DependencyInjection/article.html">Using dependency injection in Java — Introduction — Tutorial — Vogella</a></p>
+
+<p><a href="https://www.martinfowler.com/articles/injection.html">Inversion of Control Containers and the Dependency Injection pattern — Martin Fowler</a></p>
+
+<p>Hope it helps!</p>
+
+<p>If you have any questions or feedback for me than let’s connect on <a href="https://www.linkedin.com/in/bhavya-karia-1b115a93/">LinkedIn</a>, <a href="https://twitter.com/thebhavyakaria">Twitter</a> , <a href="https://www.facebook.com/karia.bhavya">Facebook</a>.</p>
+
+<p><em><strong>Thanks to <a href="https://medium.com/u/7a7d59054bae">Sergey Ufocoder</a> now this article has been converted into the Russian language. My Russian friends and who all can read the Russian language do give it a read.</strong></em></p>
+
+<p><a href="https://medium.com/@xufocoder/a-quick-intro-to-dependency-injection-what-it-is-and-when-to-use-it-de1367295ba8">Link to the article</a></p>
+
+<p>Thanks for all the kind words that I have been receiving. Do share the article so that more and more people can be benefited.</p>
+
+:ET

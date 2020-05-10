@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
-	{% include head.html %}
+{% include head.html %}
 
-	<body>
+<body>
 
-	    {% include sidebar.html %}
+	{% include sidebar.html %}
 
-	    <div class="content">
-			<header>
-		    	<nav>
-		    		<ul class="navigation">
-						<li><a href="/" class="{% if page.url == '/' %}current{% endif %}">Blogs</a></li>
-		    			<li><a href="/projects.html" class="{% if page.url == '/projects.html' %}current{% endif %}">Projects</a></li>
-		    			<li><a href="/design.html" class="{% if page.url == '/design.html' %}current{% endif %}">Designs</a></li>
-		    			<li><a href="/interest.html" class="{% if page.url == '/interest.html' %}current{% endif %}">Interests</a></li>
-		    		</ul>
-		    	</nav>
-		    </header>
-		    <hr>
+	<div class="content">
+		<header>
+			<nav>
+				<ul class="navigation">
+					<li><a href="/" class="{% if page.url == '/' %}current{% endif %}">Blogs</a></li>
+					<li><a href="/projects.html"
+							class="{% if page.url == '/projects.html' %}current{% endif %}">Projects</a></li>
+					<li><a href="/design.html" class="{% if page.url == '/design.html' %}current{% endif %}">Designs</a>
+					</li>
+					<li><a href="/interest.html"
+							class="{% if page.url == '/interest.html' %}current{% endif %}">Interests</a></li>
+				</ul>
+			</nav>
+		</header>
+		<hr>
 
-	  		{{ content }}
-    		<!-- <footer class="foot-note">
+		{{ content }}
+		<!-- <footer class="foot-note">
     			Theme By: <a href="https://github.com/poole/hyde#license">Hyde</a>
     		</footer> -->
-			</div>
-			
-			{% include footer.html %}
+	</div>
+	{% include analytics.html %}
+	{% include footer.html %}
 
-  	</body>
+</body>
+
 </html>

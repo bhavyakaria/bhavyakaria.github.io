@@ -2,7 +2,7 @@
 
 module.exports = {
   url: 'https://bhavyakaria.github.io',
-  pathPrefix: '/',
+  pathPrefix: '/bhavyakaria.github.io',
   title: 'Bhavya Karia',
   subtitle: 'Welcome to my den! I blog about web development, android and a lot more.',
   copyright: '© Bhavya Karia 2021',

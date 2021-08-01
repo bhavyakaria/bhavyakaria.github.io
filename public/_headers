@@ -93,18 +93,6 @@
   Link: </bhavyakaria.github.io/component---src-templates-categories-list-template-js-2181ec47d28e5c35d3e9.js>; rel=preload; as=script
   Link: </bhavyakaria.github.io/page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </bhavyakaria.github.io/page-data/categories/page-data.json>; rel=preload; as=fetch; crossorigin
-/bhavyakaria.github.io/posts/perfecting-the-art-of-perfection
-  Link: </bhavyakaria.github.io/webpack-runtime-14cc7788da03490a0df8.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/styles-407fe62976dc5310c43e.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/framework-b2f816f437730bdc94bf.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/532a2f07-92db97c0addf07d5cb73.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/dc6a8720040df98778fe970bf6c000a41750d3ae-5c1e759662f337becda4.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/app-1bd135a795fd57562bc6.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/styles-407fe62976dc5310c43e.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/cd95ea5cbd2c605f26db819f07999610c9ff4310-babf0c2595a064681f8b.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/component---src-templates-post-template-js-381c1b847824134fa4bd.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </bhavyakaria.github.io/page-data/posts/perfecting-the-art-of-perfection/page-data.json>; rel=preload; as=fetch; crossorigin
 /bhavyakaria.github.io/posts/a-brief-history-of-typography
   Link: </bhavyakaria.github.io/webpack-runtime-14cc7788da03490a0df8.js>; rel=preload; as=script
   Link: </bhavyakaria.github.io/styles-407fe62976dc5310c43e.js>; rel=preload; as=script
@@ -129,18 +117,6 @@
   Link: </bhavyakaria.github.io/component---src-templates-post-template-js-381c1b847824134fa4bd.js>; rel=preload; as=script
   Link: </bhavyakaria.github.io/page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </bhavyakaria.github.io/page-data/posts/the-origins-of-social-stationery-lettering/page-data.json>; rel=preload; as=fetch; crossorigin
-/bhavyakaria.github.io/posts/the-birth-of-movable-type
-  Link: </bhavyakaria.github.io/webpack-runtime-14cc7788da03490a0df8.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/styles-407fe62976dc5310c43e.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/framework-b2f816f437730bdc94bf.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/532a2f07-92db97c0addf07d5cb73.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/dc6a8720040df98778fe970bf6c000a41750d3ae-5c1e759662f337becda4.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/app-1bd135a795fd57562bc6.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/styles-407fe62976dc5310c43e.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/cd95ea5cbd2c605f26db819f07999610c9ff4310-babf0c2595a064681f8b.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/component---src-templates-post-template-js-381c1b847824134fa4bd.js>; rel=preload; as=script
-  Link: </bhavyakaria.github.io/page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </bhavyakaria.github.io/page-data/posts/the-birth-of-movable-type/page-data.json>; rel=preload; as=fetch; crossorigin
 /bhavyakaria.github.io/posts/humane-typography-in-the-digital-age
   Link: </bhavyakaria.github.io/webpack-runtime-14cc7788da03490a0df8.js>; rel=preload; as=script
   Link: </bhavyakaria.github.io/styles-407fe62976dc5310c43e.js>; rel=preload; as=script
@@ -153,6 +129,30 @@
   Link: </bhavyakaria.github.io/component---src-templates-post-template-js-381c1b847824134fa4bd.js>; rel=preload; as=script
   Link: </bhavyakaria.github.io/page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </bhavyakaria.github.io/page-data/posts/humane-typography-in-the-digital-age/page-data.json>; rel=preload; as=fetch; crossorigin
+/bhavyakaria.github.io/posts/the-birth-of-movable-type
+  Link: </bhavyakaria.github.io/webpack-runtime-14cc7788da03490a0df8.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/styles-407fe62976dc5310c43e.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/framework-b2f816f437730bdc94bf.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/532a2f07-92db97c0addf07d5cb73.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/dc6a8720040df98778fe970bf6c000a41750d3ae-5c1e759662f337becda4.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/app-1bd135a795fd57562bc6.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/styles-407fe62976dc5310c43e.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/cd95ea5cbd2c605f26db819f07999610c9ff4310-babf0c2595a064681f8b.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/component---src-templates-post-template-js-381c1b847824134fa4bd.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/page-data/app-data.json>; rel=preload; as=fetch; crossorigin
+  Link: </bhavyakaria.github.io/page-data/posts/the-birth-of-movable-type/page-data.json>; rel=preload; as=fetch; crossorigin
+/bhavyakaria.github.io/posts/perfecting-the-art-of-perfection
+  Link: </bhavyakaria.github.io/webpack-runtime-14cc7788da03490a0df8.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/styles-407fe62976dc5310c43e.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/framework-b2f816f437730bdc94bf.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/532a2f07-92db97c0addf07d5cb73.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/dc6a8720040df98778fe970bf6c000a41750d3ae-5c1e759662f337becda4.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/app-1bd135a795fd57562bc6.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/styles-407fe62976dc5310c43e.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/cd95ea5cbd2c605f26db819f07999610c9ff4310-babf0c2595a064681f8b.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/component---src-templates-post-template-js-381c1b847824134fa4bd.js>; rel=preload; as=script
+  Link: </bhavyakaria.github.io/page-data/app-data.json>; rel=preload; as=fetch; crossorigin
+  Link: </bhavyakaria.github.io/page-data/posts/perfecting-the-art-of-perfection/page-data.json>; rel=preload; as=fetch; crossorigin
 /bhavyakaria.github.io/pages/about/
   Link: </bhavyakaria.github.io/webpack-runtime-14cc7788da03490a0df8.js>; rel=preload; as=script
   Link: </bhavyakaria.github.io/styles-407fe62976dc5310c43e.js>; rel=preload; as=script

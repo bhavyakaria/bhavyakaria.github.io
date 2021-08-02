@@ -4,10 +4,18 @@ template: "page"
 socialImage: "/media/image-2.jpg"
 ---
 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+Hi there,
 
-![Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.](/media/image-2.jpg)
+Currently, I’m working as a Software Engineer at Vimana. I have more than 3 years of work experience in building products in the finance domain with a 5M+ user base.
 
-*Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.*
+I can develop applications for mobile as well as web using all the latest technologies like Android Jetpack, Kotlin, AWS services like Lambda, S3, EC2, Angular 2+, NodeJs, basic HTML/CSS and REST APIs, PostgreSQL, Ruby On Rails, GraphQL, Java, Typescript.
 
-Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
+Areas of Interest:
+• Full Stack Web Development
+• Data Structures and Algorithms
+• Competitive Programming
+• Distributed Systems
+
+Website: https://bhavyakaria.github.io
+GitHub: https://github.com/bhavyakaria
+Gmail: bhavyankaria@gmail.com

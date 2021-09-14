@@ -27,13 +27,13 @@ So before getting to [dependency injection], first let’s understand what a dep
 
 When class A uses some functionality of class B, then its said that class A has a dependency of class B.
 
-![alt text](/media/blog_images/1-dependency-injection/its_dependency.jpg "It's a Dependency!")
+![alt text](/media/image-0.jpg "It's a Dependency!")
 
 In Java, before we can use methods of other classes, we first need to create the object of that class (i.e. class A needs to create an instance of class B).
 
 So, transferring the task of creating the object to someone else and directly using the dependency is called dependency injection.
 
-![alt text](/media/blog_images/1-dependency-injection/comics_story.png "What if code could speak?")
+![alt text](/media/image-1.jpg "What if code could speak?")
 
 ### Why should I use dependency injection?
 

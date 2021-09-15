@@ -24,4 +24,6 @@ Currently, I’m working as a Software Engineer at [Vimana](https://govimana.com
 • [LeetCode](https://leetcode.com/bhavyakaria/)<br>
 • [HackerRank](https://www.hackerrank.com/parsifal)<br>
 
-Checkout my projects on [GitHub](https://github.com/bhavyakaria)<br>
+Checkout my projects on [GitHub](https://github.com/bhavyakaria)<br><br>
+
+Want to get in touch? [Contact Me](/pages/contacts).

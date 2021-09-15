@@ -10,12 +10,12 @@ Currently, I’m working as a Software Engineer at Vimana. I have more than 3 ye
 
 I can develop applications for mobile as well as web using all the latest technologies like Android Jetpack, Kotlin, AWS services like Lambda, S3, EC2, Angular 2+, NodeJs, basic HTML/CSS and REST APIs, PostgreSQL, Ruby On Rails, GraphQL, Java, Typescript.
 
-Areas of Interest:
-• Full Stack Web Development
-• Data Structures and Algorithms
-• Competitive Programming
-• Distributed Systems
+Areas of Interest:<br>
+• Full Stack Web Development<br>
+• Data Structures and Algorithms<br>
+• Competitive Programming<br>
+• Distributed Systems<br>
 
-Website: https://bhavyakaria.github.io
-GitHub: https://github.com/bhavyakaria
-Gmail: bhavyankaria@gmail.com
+Website: https://bhavyakaria.github.io<br>
+GitHub: https://github.com/bhavyakaria<br>
+Gmail: bhavyankaria@gmail.com<br>

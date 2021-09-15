@@ -1,13 +1,13 @@
 ---
 title: A quick intro to Dependency Injection what it is, and when to use it
-date: "2018-10-01T23:46:37.121Z"
+date: "2018-10-19T23:46:37.121Z"
 template: "post"
 draft: false
-slug: "perfecting-the-art-of-perfection"
+slug: "a-quick-intro-to-dependency-injection"
 category: "Design Patterns"
 tags:
   - "Tech"
-description: "Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum."
+description: "Dependency Injection is a topic which is a bit complicated to understand for a fresher but at the same time it's important since it's being used quite widely in software development. In this post, I try to simplify it as much as possible."
 socialImage: "/media/image-2.jpg"
 ---
 
@@ -27,13 +27,13 @@ So before getting to [dependency injection], first let’s understand what a dep
 
 When class A uses some functionality of class B, then its said that class A has a dependency of class B.
 
-![alt text](/media/image-0.jpg "It's a Dependency!")
+![alt text](/media/blog-images/its_dependency.jpg "It's a Dependency!")
 
 In Java, before we can use methods of other classes, we first need to create the object of that class (i.e. class A needs to create an instance of class B).
 
 So, transferring the task of creating the object to someone else and directly using the dependency is called dependency injection.
 
-![alt text](/media/image-1.jpg "What if code could speak?")
+![alt text](/media/blog-images/comics_story.png "What if code could speak?")
 
 ### Why should I use dependency injection?
 

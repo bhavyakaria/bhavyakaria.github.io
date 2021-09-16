@@ -15,7 +15,7 @@ socialImage: "/media/image-2.jpg"
 
 ### Introduction
 
->_In software engineering, **dependency injection** is a technique whereby one object (or static method) supplies the dependencies of another object. A dependency is an object that can be used (a service)._
+> In software engineering, **dependency injection** is a technique whereby one object (or static method) supplies the dependencies of another object. A dependency is an object that can be used (a service).
 
 That’s the Wikipedia definition but still, but it’s not particularly easy to understand. So let’s understand it better.
 

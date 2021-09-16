@@ -125,9 +125,21 @@ p {
 }
 
 blockquote {
-  padding: 0;
+  border-left: 2px solid $color-gray;
+  margin: 0;
+  margin-left: -$layout-mobile-padding;
+  padding: 0 0 0 ($layout-mobile-padding - 2px);
   font-style: italic;
-  text-align: center;
+  font-size: $typographic-base-font-size;
+  font-weight: 300;
+
+  strong {
+    font-weight: 600;
+  }
+
+  a {
+    font-weight: normal;
+  }
 }
 
 figure {

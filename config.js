@@ -22,6 +22,10 @@ module.exports = {
     {
       label: 'Contact me',
       path: '/pages/contacts'
+    },
+    {
+      label: 'Download Resume',
+      path: 'https://drive.google.com/file/d/1uZXjuOaq9yBQbSqIWppGzVVt5CN9n9no/view?usp=sharing'
     }
   ],
   author: {

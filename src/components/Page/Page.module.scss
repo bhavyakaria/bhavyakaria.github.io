@@ -2,10 +2,10 @@
 @import '../../assets/scss/mixins';
 
 .page {
-  @include margin-bottom(2);
+  // @include margin-bottom(2);
 
   &__inner {
-    padding: 25px 20px;
+    padding: 25px 20px 0px 20px;
   }
 
   &__title {
@@ -19,7 +19,7 @@
   &__body {
     font-size: $typographic-base-font-size;
     @include line-height(1);
-    @include margin(0, 0, 1);
+    @include margin(0, 0, 0);
   }
 
 }

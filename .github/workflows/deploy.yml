@@ -26,9 +26,10 @@ jobs:
         node-version: '18'
         cache: 'pnpm'
 
-    - uses: pnpm/action-setup@v2
-        with:
-          version: 8.12.0
+    - name: Install PNPM 
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8.12.0
 
     # Not using npm? Change `npm ci` to `yarn install` or `pnpm i`
     - name: Install dependencies

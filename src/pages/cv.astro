@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TimeLineElement from "../components/cv/TimeLine.astro";
+---
+
+<BaseLayout title="Resume" sideBarActiveItemID="cv">
+  <div class="mb-5 flex align-middle justify-between">
+    <div class="text-3xl font-bold">Profile</div>
+    <div >
+      <a class="float-right text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" href="https://drive.google.com/file/d/1uZXjuOaq9yBQbSqIWppGzVVt5CN9n9no/view?usp=sharing" target="_blank"> Download Resume</a>
+    </div>
+  </div>
+
+  <div class="mb-10 text-justify">
+    Software Engineer looking out to develop scalable products which will make everyone's life a bit easy. Currently working at BrowserStack and in the past have worked for Vimana, Upwards & Myrsa Tech. I have more than 5 years of work experience in building products in domains such as finance, IoT, manufacturing. Previously, I was a Senior Software Engineer at Upwards Fintech where I worked on applications having more than 5 million users and 1 million+ app downloads.
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Education</div>
+  </div>
+
+  <div class="time-line-container grid gap-4 mb-10">
+    <TimeLineElement
+      title="Bachelor's in Computer Science"
+      subtitle="2014 to 2018 at XIE, Mumbai, India"
+    />
+    <TimeLineElement
+      title="High School"
+      subtitle="2012 to 2014 at T.P Bhatia College of Science, Mumbai, India"
+    />
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Experience</div>
+  </div>
+
+  <div class="time-line-container mb-10">
+    <TimeLineElement
+      title="Senior Full Stack Engineer"
+      subtitle="From 2022 to Present at BrowserStack, Remote"
+    >
+      Working with Growth team to enable them in creating features using experiment framework which helps in improving user experience on the platform.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Software Engineer"
+      subtitle="From 2021 to 2022 at Vimana, Remote"
+    >
+      Roles and responsibilities:<br/>
+      • Worked on multiple microservices in a distributed system.<br/>
+      • Wrote unit and integration tests to make the applications robust.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Senior Software Engineer"
+      subtitle="From 2020 to 2021 at Upwards Fintech, Mumbai, India"
+    >
+      Handing 2 major Web projects, Loan Management System and DSA portal
+
+      Roles and responsibilities:<br/>
+      • Architectured developed and scaled multiple core components from scratch.<br/>
+      • Handling multiple Web Applications and a consumer-facing Android app.<br/>
+      • Implemented role-based access control (RBAC) to restrict sensitive customer data.<br/>
+      • Built metadata management tools to monitor several metrics of android application.<br/>
+      • Developed multiple core utilities to automate critical data-crunching tasks.<br/><br/>
+      
+      Working on:<br/>
+      PostgreSQL | Firebase | Git | Angular (2+) | TypeScript | Python
+    </TimeLineElement>
+    <TimeLineElement
+      title="Software Engineer - Android"
+      subtitle="From 2019 to 2020 at Upwards Fintech, Mumbai, India"
+    >
+      Roles and responsibilities:<br/>
+      • Responsible for developing features for the consumer app with 25K daily active users and 5M+ downloads.<br/>
+      • Designed several modules: Credit Report, Referral, Help Center, Feeds & Stickers to improve user interaction and within the app.<br/><br/>
+      
+      Worked on:<br/>
+      Android | Java | PostgreSQL | Firebase | Git | Python
+    </TimeLineElement>
+    <TimeLineElement
+      title="Software Engineer - Android"
+      subtitle="From 2018 to 2019 at Myrsa Tech, Mumbai, India"
+    >
+      Developed 2 android apps and 1 java application:<br><br>
+
+      Roles and responsibilities:<br>
+      • Allowed certain APIs from microservices to scale using AWS Lambda.<br>
+      • Reduced load on company server by 25% by implementing direct S3 image uploading.<br>
+      • Responsible for handling and deploying new android applications on Play Store.<br><br>
+      
+      Worked on: <br>
+      Java | Kotlin | XML | MVVM | Data Binding | Room | FCM | MySQL | Javascript | AWS Lambda(Serverless) | Firebase | Git(Bitbucket & Github)
+    </TimeLineElement>
+  </div>
+  
+</BaseLayout>

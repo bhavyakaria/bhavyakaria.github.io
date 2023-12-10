@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const last_posts = posts.slice(0, 3);
+---
+
+<BaseLayout sideBarActiveItemID="home">
+  <div class="pb-12 mt-5">
+    <div class="text-xl py-1">Hey there 👋</div>
+    <div class="text-5xl font-bold">I'm Bhavya Karia</div>
+    <div class="text-3xl py-3 font-bold">Software Engineer @ <a class="text-blue-700 underline underline-offset-4" href="https://www.browserstack.com">BrowserStack</a></div>
+    <div class="py-2">
+      <text class="text-lg">
+        Currently my day to day responsibilites involve enabling Growth Team at BrowserStack to develop features via experimenting framework which will help us provide better developer & user experience. Apart from job, in my free time I like to give back to the community via Open Source and career counseling. 
+      </text>
+      <br /><br />
+      <text class="text-lg mt-5">
+        <b>Areas of Interest</b>
+        <ul class="list-disc pl-5">
+          <li>Full Stack Web Development</li>
+          <li>Data Structures and Algorithms</li>
+          <li>Competitive Programming</li>
+          <li>Distributed Systems</li>
+        </ul>
+      </text>
+      <br />
+      <text class="text-lg mt-5">
+        <b>Competitive Programming</b>
+        <ul class="list-disc pl-5">
+          <li>CodeChef</li>
+          <li>LeetCode</li>
+          <li>HackerRank</li>
+        </ul>
+      </text>
+    </div>
+    <div class="flex flex-row">
+      <div class="mt-8">
+        <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" href="https://www.linkedin.com/in/bhavyakaria/" target="_blank"> LinkedIn</a>
+      </div>
+      <div class="mt-8">
+        <a class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" href="https://twitter.com/bhavyankaria" target="_blank">Twitter</a>
+      </div>
+    </div>
+  </div>

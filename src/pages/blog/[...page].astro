@@ -27,15 +27,7 @@ const { page } = Astro.props;
       <ul>
         {page.data.map((post) => (
           <>
-            <HorizontalCard
-              title={post.data.title}
-              img={post.data.heroImage}
-              desc={post.data.description}
-              url={"/blog/" + post.slug}
-              target="_self"
-              badge={post.data.badge}
-              tags={post.data.tags}
-            />
+          <div class="text-xl mt-5 my-5 cursor-pointer hover:underline"><a href={"/blog/" + post.slug}>{post.data.title}</a></div>
             <div class="divider my-0" />
           </>
         ))}

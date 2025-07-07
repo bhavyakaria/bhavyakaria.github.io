@@ -1,3 +1,13 @@
 .time-line-container>div:last-child .education__time>.education__line {
     display: none;
 }
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}

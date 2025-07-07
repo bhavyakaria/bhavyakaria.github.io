@@ -2,19 +2,20 @@
 const { title, img, desc, url, badge, tags, target = "_blank" } = Astro.props;
 import { Image } from "astro:assets";
 ---
-
-<div class="md:w-1/3 w-full">
+<div class="w-full">
   <a href={url} target={target}>
-    <div class="card bg-base-100 transition ease-in-out hover:shadow-xl mx-6 my-2 hover:scale-[102%]">
-      <Image width={750} height={422} format="webp" src={img} alt={title} />
-      <div class="card-body">
+    <div class="card card-side bg-base-100 border border-gray-300 rounded-lg transition ease-in-out hover:shadow-lg hover:text-blue-700 mr-6 my-2 h-fit">
+      <div class="card-body w-2/3">
         <h2 class="card-title">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"></path>
+          </svg>
           {title}
           {badge && <div class="badge badge-secondary">{badge}</div>}
         </h2>
-        <p>{desc}</p>
-        <div class="card-actions justify-end">
-          {tags && tags.map((tag) => <div class="badge badge-outline">{tag}</div>)}
+        <p class="text-black">{desc}</p>
+        <div class="card-actions justify-start">
+          {tags && Array.isArray(tags) && tags.length > 0 && tags.map((tag) => <div class="text-black badge badge-outline border-gray-300 rounded p-3">{tag}</div>)}
         </div>
       </div>
     </div>

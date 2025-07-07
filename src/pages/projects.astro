@@ -1,51 +1,54 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
+import Card from "../components/Card.astro";
+console.log('sample');
 ---
 
 <BaseLayout title = "Projects" sideBarActiveItemID="projects">
   <div>
-    <div class="text-3xl w-full font-bold mb-5">Projects Header</div>
+    <div class="text-3xl w-full font-bold my-10">Projects</div>
   </div>
 
-  <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <Card
+      title="Quote Book"
+      img="/post_img.webp",
+      desc="An application for viewing and adding highlights from my kindle.", 
+      url="https://github.com/bhavyakaria/quote-book", 
+      badge="", 
+      tags = {["web app", "angular"]},
+      target = "_blank"
+    />
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Projects Header</div>
+    <Card
+      title="Graphics Editor"
+      img="/post_img.webp",
+      desc="A graphics editor built for reduce manual masking efforts of employees.", 
+      url="https://github.com/bhavyakaria/graphics-editor", 
+      badge="", 
+      tags = {["web app", "angular", "canvas"]}
+      target = "_blank"
+    />
+
+    <Card
+      title="Travel-Mate"
+      img="/post_img.webp",
+      desc="Trying to add meaningful contribution to an open source repository.", 
+      url="https://github.com/project-travel-mate/Travel-Mate/pulls?q=is%3Apr+author%3Abhavyakaria+is%3Aclosed", 
+      badge="", 
+      tags = {["open source", "android", "java"]}
+      target = "_blank"
+    />
+
+    <Card
+      title="Korri"
+      img="/post_img.webp",
+      desc="Working on a project to make people's life easy while maintaining their finances.", 
+      url="https://github.com/bhavyakaria/Korri", 
+      badge="", 
+      tags = {["android", "kotlin", "jetpack compose"]}
+      target = "_blank"
+    />
   </div>
-
-  <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 4"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 5"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
 </BaseLayout>

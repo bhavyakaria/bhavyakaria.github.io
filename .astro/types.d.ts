@@ -190,14 +190,14 @@ declare module 'astro:content' {
   slug: "post1";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "post2.md": {
 	id: "post2.md";
   slug: "post2";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 };
 "store": {
@@ -206,21 +206,21 @@ declare module 'astro:content' {
   slug: "item1";
   body: string;
   collection: "store";
-  data: any
+  data: InferEntrySchema<"store">
 } & { render(): Render[".md"] };
 "item2.md": {
 	id: "item2.md";
   slug: "item2";
   body: string;
   collection: "store";
-  data: any
+  data: InferEntrySchema<"store">
 } & { render(): Render[".md"] };
 "item3.md": {
 	id: "item3.md";
   slug: "item3";
   body: string;
   collection: "store";
-  data: any
+  data: InferEntrySchema<"store">
 } & { render(): Render[".md"] };
 };
 
@@ -232,5 +232,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	type ContentConfig = never;
+	type ContentConfig = typeof import("../src/content/config");
 }

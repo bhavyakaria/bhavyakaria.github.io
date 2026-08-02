@@ -1,53 +1,108 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
-import { getCollection } from "astro:content";
-
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const last_posts = posts.slice(0, 3);
 ---
 
-<BaseLayout sideBarActiveItemID="home">
-  <div
-    class="inset-0"
-  >
-    <div class="my-10">
-      <div class="text-xl py-1">Hey there 👋</div>
-      <div class="text-5xl font-bold">I'm Bhavya Karia</div>
-      <div class="text-3xl py-3 font-bold">Senior Full Stack Engineer @ <a class="text-blue-700 underline underline-offset-4" href="https://www.sardine.ai">Sardine</a></div>
-      <div>
-        <text class="text-lg">
-          Currently my day to day responsibilities involve building tools to fight fraud in payments. In my free time I like to give back to the community via Open Source and career counseling. 
-        </text>
-        <br /><br />
-        <text class="text-lg mt-5"> 
-          <b>Areas of Interest</b>
-          <ul class="list-disc pl-5">
-            <li>Full Stack Web Development</li>
-            <li>Data Structures and Algorithms</li>
-            <li>Competitive Programming</li>
-            <li>Distributed Systems</li>
-          </ul>
-        </text>
-        <br />
-        <text class="text-lg mt-5">
-          <b>Competitive Programming</b>
-          <ul class="list-disc pl-5">
-            <li><a class="hover:text-blue-700" href="https://www.codechef.com/users/parsifal" target="_blank">CodeChef</a></li>
-            <li><a class="hover:text-blue-700" href="https://leetcode.com/u/bhavyakaria/" target="_blank">LeetCode</a></li>
-            <li>HackerRank</li>
-          </ul>
-        </text>
-      </div>
-      <div class="flex flex-row">
-        <div class="mt-5">
-          <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" href="https://www.linkedin.com/in/bhavyakaria/" target="_blank"> LinkedIn</a>
-        </div>
-        <div class="mt-5">
-          <a class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" href="https://twitter.com/bhavyankaria" target="_blank">Twitter</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<BaseLayout active="home">
+    <!-- Intro -->
+    <section class="mb-8">
+        <p class="text-t-primary leading-relaxed">
+            Hey, I'm Bhavya Karia! Senior Full Stack Engineer at <a
+                href="https://www.sardine.ai"
+                class="underline text-t-accent"
+                target="_blank"
+                rel="noopener noreferrer">Sardine</a
+            >, where I build tools to fight fraud in payments. Previously, I've
+            worked at BrowserStack, Upwards Fintech, Vimana, and Myrsa Tech
+            &mdash; across domains like fintech, IoT, and manufacturing.
+        </p>
+        <p class="text-t-primary leading-relaxed mt-3">
+            In my free time, I enjoy giving back through open source, career
+            counseling, and competitive programming.
+        </p>
+    </section>
+
+    <!-- Open Source -->
+    <section class="mb-12">
+        <h2
+            class="text-base font-semibold mb-4 pb-1 border-b border-b-color/15"
+        >
+            Open Source
+        </h2>
+        <ul class="space-y-3 text-sm text-t-primary">
+            <li>
+                <a
+                    href="https://github.com/project-travel-mate/Travel-Mate/pulls?q=is%3Apr+is%3Aclosed+author%3Abhavyakaria"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="underline text-t-accent"
+                >
+                    Fixing Bugs for Travel Mate &mdash; Android Application
+                </a>
+            </li>
+            <li>
+                <a
+                    href="https://github.com/google/wikiloop-doublecheck/pulls?q=is:pr+is:closed+author:bhavyakaria"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="underline text-t-accent"
+                >
+                    Wikiloop Battlefield (Google) &mdash; Fighting Vandalism on
+                    Wikipedia
+                </a>
+            </li>
+            <li>
+                <a
+                    href="https://github.com/labuladong/fucking-algorithm/pulls?q=is:pr+author:bhavyakaria+is:closed"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="underline text-t-accent"
+                >
+                    Adding Algorithms in Kotlin
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <!-- StackOverflow -->
+    <section class="mb-12">
+        <h2
+            class="text-base font-semibold mb-4 pb-1 border-b border-b-color/15"
+        >
+            StackOverflow
+        </h2>
+        <ul class="space-y-3 text-sm text-t-primary">
+            <li>
+                <a
+                    href="https://stackoverflow.com/a/59050236/4511489"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="underline text-t-accent"
+                >
+                    How do I add a Fragment to an Activity with a
+                    programmatically created content view
+                </a>
+            </li>
+            <li>
+                <a
+                    href="https://stackoverflow.com/a/62607421/4511489"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="underline text-t-accent"
+                >
+                    How do I escape curly braces for display on page when using
+                    AngularJS?
+                </a>
+            </li>
+            <li>
+                <a
+                    href="https://stackoverflow.com/a/66093068/4511489"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="underline text-t-accent"
+                >
+                    mongoose "Find" with multiple conditions
+                </a>
+            </li>
+        </ul>
+    </section>
 </BaseLayout>

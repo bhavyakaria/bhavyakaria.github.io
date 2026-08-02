@@ -4,15 +4,21 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				'aleo': ['Aleo', 'serif'],
-				'serif': ['Aleo', 'serif'],
+				'sans': ["'iA Writer Mono'", 'ui-monospace', 'SFMono-Regular', 'SF Mono', 'Menlo', 'Consolas', 'monospace'],
+				'mono': ["'iA Writer Mono'", 'ui-monospace', 'SFMono-Regular', 'SF Mono', 'Menlo', 'Consolas', 'monospace'],
+			},
+			colors: {
+				'surface': 'rgb(var(--color-bg) / <alpha-value>)',
+				't-primary': 'rgb(var(--color-text) / <alpha-value>)',
+				't-accent': 'rgb(var(--color-accent) / <alpha-value>)',
+				'b-color': 'rgb(var(--color-border) / <alpha-value>)',
 			},
 		},
 	},
 	plugins: [require("@tailwindcss/typography"),require("daisyui")],
 	daisyui: {
-		themes: true, // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
-		darkTheme: "dark", // name of one of the included themes for dark mode
-		logs: false, // Shows info about daisyUI version and used config in the console when building your CSS
-	  }
+		themes: ["light", "dark"],
+		darkTheme: "dark",
+		logs: false,
+	}
 }

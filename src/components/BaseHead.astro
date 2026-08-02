@@ -1,6 +1,4 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
 
 export interface Props {
@@ -12,35 +10,44 @@ export interface Props {
 const { title, description, image = '/social_img.png' } = Astro.props;
 ---
 
-<!-- Umami Analytics (privacy-friendly, open-source) -->
-<!-- 1. Sign up at https://umami.is (free cloud tier) or self-host -->
-<!-- 2. Replace YOUR_WEBSITE_ID below with your Website ID from Umami dashboard -->
+<!-- Umami Analytics -->
 <script async src="https://cloud.umami.is/script.js" data-website-id="2671807b-c765-4bee-b2fc-13d08ed2e85c"></script>
 
-<!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Google Fonts: Aleo -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<!-- Preload fonts to prevent FOUT on navigation -->
+<link rel="preload" href="/fonts/ia-writer-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/ia-writer-mono-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+<style is:inline>
+  @font-face {
+    font-family: 'iA Writer Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/ia-writer-mono-latin-400-normal.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'iA Writer Mono';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/ia-writer-mono-latin-700-normal.woff2') format('woff2');
+  }
+</style>
 
-<!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
-<!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
 
-<!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />

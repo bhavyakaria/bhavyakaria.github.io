@@ -77,7 +77,3 @@ npm run dev
 ├── package.json
 └── tsconfig.json
 ```
-
-## Credits
-
-Thanks to [Manuel Ernesto Garcia](https://github.com/manuelernestog) for such awesome template.

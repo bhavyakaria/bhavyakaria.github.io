@@ -15,7 +15,7 @@ const displayDate = dayjs(pubDate).format("ll");
 
 <BaseLayout title={title} description={description} image={heroImage} active={active}>
   <article>
-    <h1 class="text-2xl font-semibold mb-2">{title}</h1>
+    <h1 class="text-2xl font-semibold mb-2 text-t-accent">{title}</h1>
     <div class="text-sm text-t-primary/50 mb-6">
       {pubDate && <time>{displayDate}</time>}
       {updatedDate && <span> &middot; Updated {updatedDate}</span>}

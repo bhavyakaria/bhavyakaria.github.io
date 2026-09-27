@@ -5,6 +5,8 @@ html {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: radial-gradient(circle, rgb(var(--color-border) / 0.10) 1px, transparent 1px);
+  background-size: 16px 16px;
 }
 
 :root {
@@ -26,7 +28,7 @@ html[data-theme="dark"] {
 }
 
 html[data-theme="dark"] body {
-  background: #252525b3;
+  background-color: #252525b3;
 }
 
 h1, h2, h3, h4, h5, h6 {

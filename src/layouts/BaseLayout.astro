@@ -68,7 +68,7 @@ const {
                     </a>
                 </div>
                 <nav class="mt-12 text-md">
-                    <div class="flex flex-wrap justify-center gap-x-8 gap-y-1">
+                    <div class="flex flex-wrap justify-center gap-x-8 gap-y-1 items-center">
                         <a
                             href="/"
                             class={`hover:text-t-accent transition-colors${active === "home" ? " underline decoration-t-accent underline-offset-8 text-t-accent font-semibold" : " text-t-primary/60"}`}
@@ -94,8 +94,13 @@ const {
                         <button
                             id="theme-toggle"
                             onclick="var h=document.documentElement;var c=h.getAttribute('data-theme');var n=c==='light'?'dark':'light';h.setAttribute('data-theme',n);localStorage.setItem('theme',n);this.textContent=n==='light'?'\u25D0':'\u25D1';"
-                            class="text-t-primary/60 hover:text-t-accent transition-colors"
+                            class="text-t-primary/60 hover:text-t-accent transition-colors leading-none"
                             aria-label="Toggle theme">◑</button
+                        >
+                        <button
+                            id="sound-toggle"
+                            class="text-t-primary/60 hover:text-t-accent transition-colors text-xl leading-none"
+                            aria-label="Mute sounds">&#x1F508;&#xFE0E;</button
                         >
                     </div>
                 </nav>
@@ -118,5 +123,6 @@ const {
                 Personal site of Bhavya Karia
             </footer>
         </div>
+        <script type="module" src="/ui-sound.js"></script>
     </body>
 </html>

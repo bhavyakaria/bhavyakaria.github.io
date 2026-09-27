@@ -45,10 +45,10 @@ const { tag } = Astro.params;
 
   <div class="flex justify-between mt-12 text-sm">
     {page.url.prev ? (
-      <a href={page.url.prev} class="underline text-t-accent">&larr; Recent posts</a>
+      <a href={page.url.prev} class="underline text-t-accent" data-sound="tick-newer">&larr; Recent posts</a>
     ) : <span />}
     {page.url.next ? (
-      <a href={page.url.next} class="underline text-t-accent">Older posts &rarr;</a>
+      <a href={page.url.next} class="underline text-t-accent" data-sound="tick-older">Older posts &rarr;</a>
     ) : <span />}
   </div>
 </BaseLayout>

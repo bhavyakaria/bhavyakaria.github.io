@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Sound Lab — tuning bench</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --surface: #0f1117;
+      --text: #e6e6e6;
+      --dim: #888;
+      --accent: #4fd1c5;
+      --border: rgba(255, 255, 255, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 2rem 1rem 4rem;
+      background: var(--surface);
+      color: var(--text);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    main { max-width: 760px; margin: 0 auto; }
+    h1 { font-size: 1.1rem; margin: 0 0 .25rem; }
+    h2 { font-size: .95rem; margin: 2rem 0 .75rem; }
+    p.hint { color: var(--dim); margin: 0 0 1.5rem; font-size: .85rem; }
+    .master { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: .75rem;
+      margin-bottom: 1rem;
+    }
+    .row { display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap; }
+    .name { font-weight: 700; min-width: 7rem; }
+    button {
+      font: inherit;
+      color: var(--text);
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: .25rem .7rem;
+      cursor: pointer;
+    }
+    button:hover { border-color: var(--accent); color: var(--accent); }
+    select {
+      font: inherit;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: .25rem .5rem;
+    }
+    .vol { display: flex; align-items: center; gap: .5rem; font-size: .8rem; color: var(--dim); }
+    #browse { display: flex; flex-wrap: wrap; gap: .4rem; }
+    #copy { border-color: var(--accent); color: var(--accent); margin-bottom: 1rem; }
+    #out {
+      white-space: pre;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      font-size: .8rem;
+      overflow-x: auto;
+    }
+    input[type="range"] { width: 140px; accent-color: var(--accent); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Sound Lab</h1>
+    <p class="hint">
+      Live tuning bench for the sample-based sounds. Per slot: pick a file,
+      set volume, ▶ play. "×20 rapid" is the repetition-tolerance test.
+      The Browse section lists every vendored file. When satisfied, hit Copy,
+      paste the block into <code>public/ui-sound.js</code> (SOUNDS /
+      MASTER_VOLUME section) and hard-refresh.
+    </p>
+
+    <div class="master">
+      <label for="master">Master volume</label>
+      <input type="range" id="master" min="0" max="100" />
+      <span id="master-val"></span>
+    </div>
+
+    <h2>Current mapping</h2>
+    <div id="slots"></div>
+
+    <h2>Browse all vendored files</h2>
+    <div id="browse"></div>
+
+    <h2>Export</h2>
+    <button id="copy">Copy constants block</button>
+    <pre id="out">(nothing copied yet)</pre>
+  </main>
+
+  <script type="module">
+    import { SOUNDS, MASTER_VOLUME } from "/ui-sound.js";
+
+    const FILES = [
+      "click_001.wav", "click_004.wav",
+      "select_001.wav", "select_002.wav", "select_008.wav",
+      "tick_001.wav",
+    ];
+
+    // --- own engine (independent of the live module's muted state) ---
+    const ctx = new AudioContext();
+    const cache = new Map();
+
+    function playFile(file, volume) {
+      const url = "/sounds/" + file;
+      if (cache.has(url)) {
+        start(cache.get(url), volume);
+        return;
+      }
+      fetch(url)
+        .then((r) => r.arrayBuffer())
+        .then((ab) => ctx.decodeAudioData(ab))
+        .then((buffer) => {
+          cache.set(url, buffer);
+          start(buffer, volume);
+        });
+    }
+
+    function start(buffer, volume) {
+      const src = ctx.createBufferSource();
+      src.buffer = buffer;
+      const gain = ctx.createGain();
+      gain.gain.value = volume;
+      src.connect(gain).connect(ctx.destination);
+      src.start();
+    }
+
+    // --- master volume slider ---
+    const master = document.getElementById("master");
+    const masterVal = document.getElementById("master-val");
+    master.value = Math.round(MASTER_VOLUME * 100);
+    masterVal.textContent = MASTER_VOLUME.toFixed(2);
+    master.addEventListener("input", () => {
+      masterVal.textContent = (master.value / 100).toFixed(2);
+    });
+    const masterVol = () => master.value / 100;
+
+    // --- slot cards ---
+    const slots = document.getElementById("slots");
+    const slotVols = {}; // slot name -> per-sound volume multiplier
+
+    for (const [name, def] of Object.entries(SOUNDS)) {
+      slotVols[name] = def.volume;
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const row = document.createElement("div");
+      row.className = "row";
+
+      const label = document.createElement("span");
+      label.className = "name";
+      label.textContent = name;
+
+      const select = document.createElement("select");
+      select.dataset.slot = name;
+      for (const f of FILES) {
+        const opt = document.createElement("option");
+        opt.value = f;
+        opt.textContent = f;
+        if (def.file === "/sounds/" + f) opt.selected = true;
+        select.appendChild(opt);
+      }
+
+      const playBtn = document.createElement("button");
+      playBtn.dataset.play = name;
+      playBtn.textContent = "▶ play";
+
+      const rapidBtn = document.createElement("button");
+      rapidBtn.dataset.rapid = name;
+      rapidBtn.textContent = "×20 rapid";
+      rapidBtn.title = "Repetition-tolerance test";
+
+      row.append(label, select, playBtn, rapidBtn);
+
+      const volWrap = document.createElement("div");
+      volWrap.className = "vol";
+      const volLabel = document.createElement("span");
+      volLabel.textContent = "volume";
+      const volSlider = document.createElement("input");
+      volSlider.type = "range";
+      volSlider.min = 0;
+      volSlider.max = 100;
+      volSlider.value = Math.round(def.volume * 100);
+      volSlider.dataset.vol = name;
+      const volVal = document.createElement("span");
+      volVal.textContent = def.volume.toFixed(2);
+      volWrap.append(volLabel, volSlider, volVal);
+
+      card.append(row, volWrap);
+      slots.appendChild(card);
+
+      volSlider.addEventListener("input", () => {
+        slotVols[name] = volSlider.value / 100;
+        volVal.textContent = slotVols[name].toFixed(2);
+      });
+    }
+
+    slots.addEventListener("click", (event) => {
+      const playBtn = event.target.closest("[data-play]");
+      const rapidBtn = event.target.closest("[data-rapid]");
+      const name = playBtn?.dataset.play ?? rapidBtn?.dataset.rapid;
+      if (!name) return;
+      const select = slots.querySelector(`[data-slot="${name}"]`);
+      const volume = slotVols[name] * masterVol();
+      if (rapidBtn) {
+        for (let i = 0; i < 20; i++) {
+          setTimeout(() => playFile(select.value, volume), i * 120);
+        }
+      } else {
+        playFile(select.value, volume);
+      }
+    });
+
+    // --- browse all files ---
+    const browse = document.getElementById("browse");
+    for (const f of FILES) {
+      const btn = document.createElement("button");
+      btn.textContent = f;
+      btn.addEventListener("click", () => playFile(f, 0.6 * masterVol()));
+      browse.appendChild(btn);
+    }
+
+    // --- export ---
+    document.getElementById("copy").addEventListener("click", () => {
+      const entries = Object.keys(SOUNDS).map((name) => {
+        const select = slots.querySelector(`[data-slot="${name}"]`);
+        return `  ${name}: { file: "/sounds/${select.value}", volume: ${slotVols[name].toFixed(2)} },`;
+      });
+      const out =
+        `export const SOUNDS = {\n${entries.join("\n")}\n};\n\n` +
+        `export const MASTER_VOLUME = ${masterVol().toFixed(2)};`;
+      document.getElementById("out").textContent = out;
+      navigator.clipboard?.writeText(out);
+    });
+  </script>
+</body>
+</html>

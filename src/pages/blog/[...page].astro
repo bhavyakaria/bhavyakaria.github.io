@@ -48,7 +48,7 @@ const { page } = Astro.props;
     <div class="flex justify-between mt-12 text-sm">
         {
             page.url.prev ? (
-                <a href={page.url.prev} class="underline text-t-accent">
+                <a href={page.url.prev} class="underline text-t-accent" data-sound="tick-newer">
                     &larr; Recent posts
                 </a>
             ) : (
@@ -57,7 +57,7 @@ const { page } = Astro.props;
         }
         {
             page.url.next ? (
-                <a href={page.url.next} class="underline text-t-accent">
+                <a href={page.url.next} class="underline text-t-accent" data-sound="tick-older">
                     Older posts &rarr;
                 </a>
             ) : (

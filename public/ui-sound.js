@@ -113,13 +113,20 @@ function resolveMuted() {
 let muted = resolveMuted();
 let userChoseMute = storageGet(STORAGE_KEY) !== null;
 
+// Monochrome speaker icons — stroke inherits nav text color via currentColor,
+// so rendering is identical on macOS / Windows / Linux.
+const ICON_AUDIBLE =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>';
+const ICON_MUTED =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><line x1="22" x2="16" y1="9" y2="15"/><line x1="16" x2="22" y1="9" y2="15"/></svg>';
+
 function updateMuteButton() {
   const btn = document.getElementById("sound-toggle");
   if (!btn) return;
-  // Speaker icons, forced to text presentation (U+FE0E) so they render as
-  // monochrome glyphs matching the site's ◑ typographic aesthetic.
-  // 🔇 = muted, 🔈 = audible.
-  btn.textContent = muted ? "\u{1F507}\uFE0E" : "\u{1F508}\uFE0E";
+  // Inline SVG speaker icons (Lucide volume-2 / volume-x style) using
+  // stroke="currentColor" so they inherit the nav's monochrome text color
+  // and hover accent on every OS — no emoji font fallback involved.
+  btn.innerHTML = muted ? ICON_MUTED : ICON_AUDIBLE;
   btn.setAttribute("aria-label", muted ? "Unmute sounds" : "Mute sounds");
   btn.setAttribute("title", muted ? "Unmute sounds" : "Mute sounds");
 }
@@ -130,6 +137,9 @@ function setMuted(next) {
   storageSet(STORAGE_KEY, next ? "1" : "0");
   updateMuteButton();
 }
+
+// Sync icon with stored / autoplay-policy state on load.
+updateMuteButton();
 
 // ---------------------------------------------------------------------------
 // AudioContext unlock (autoplay policy)

@@ -1,5 +1,6 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
+import Weather from "../components/Weather.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 
 const {
@@ -118,9 +119,9 @@ const {
             </main>
 
             <footer
-                class="mt-24 pt-8 border-t border-b-color/15 text-sm text-t-primary/40"
+                class="mt-24 pt-8 border-t border-b-color/15 text-sm text-t-primary/40 flex items-center justify-between gap-4"
             >
-                Personal site of Bhavya Karia
+                Personal site of Bhavya Karia<Weather />
             </footer>
         </div>
         <script type="module" src="/ui-sound.js"></script>

@@ -1,0 +1,98 @@
+---
+// Live weather for Mumbai in the footer.
+// Fetched at runtime from Open-Meteo (free, no API key, CORS enabled).
+// Hidden by default; only appears once data (cached or fresh) is available,
+// so the footer stays clean if the API is unreachable.
+---
+
+<span id="footer-weather" hidden></span>
+<script is:inline>
+    (function () {
+        var el = document.getElementById("footer-weather");
+        if (!el) return;
+
+        var STORAGE_KEY = "footer-weather";
+        var TTL = 30 * 60 * 1000; // refetch at most every 30 minutes
+        var API_URL =
+            "https://api.open-meteo.com/v1/forecast" +
+            "?latitude=19.076&longitude=72.8777" +
+            "&current=temperature_2m,is_day,weather_code" +
+            "&timezone=auto";
+
+        // WMO weather codes -> [emoji, label]
+        function weatherInfo(code, isDay) {
+            if (code === 0) return isDay ? ["☀️", "Clear sky"] : ["🌙", "Clear sky"];
+            if (code === 1) return isDay ? ["🌤️", "Mainly clear"] : ["🌙", "Mainly clear"];
+            if (code === 2) return ["⛅", "Partly cloudy"];
+            if (code === 3) return ["☁️", "Overcast"];
+            if (code === 45 || code === 48) return ["🌫️", "Fog"];
+            if (code === 51) return ["🌦️", "Light drizzle"];
+            if (code === 53) return ["🌦️", "Drizzle"];
+            if (code === 55) return ["🌧️", "Dense drizzle"];
+            if (code === 56 || code === 57) return ["🌧️", "Freezing drizzle"];
+            if (code === 61) return ["🌧️", "Light rain"];
+            if (code === 63) return ["🌧️", "Rain"];
+            if (code === 65) return ["🌧️", "Heavy rain"];
+            if (code === 66 || code === 67) return ["🌧️", "Freezing rain"];
+            if (code === 71) return ["🌨️", "Light snow"];
+            if (code === 73) return ["🌨️", "Snow"];
+            if (code === 75) return ["🌨️", "Heavy snow"];
+            if (code === 77) return ["❄️", "Snow grains"];
+            if (code === 80) return ["🌦️", "Light showers"];
+            if (code === 81) return ["🌧️", "Showers"];
+            if (code === 82) return ["🌧️", "Heavy showers"];
+            if (code === 85 || code === 86) return ["🌨️", "Snow showers"];
+            if (code === 95) return ["⛈️", "Thunderstorm"];
+            if (code === 96 || code === 99) return ["⛈️", "Thunderstorm w/ hail"];
+            return ["🌡️", "Unknown"];
+        }
+
+        function show(data) {
+            var info = weatherInfo(data.code, data.isDay);
+            el.textContent =
+                info[0] +
+                " " +
+                info[1] +
+                ", " +
+                Math.round(data.temp) +
+                "°C";
+            el.title = "Weather data by Open-Meteo";
+            el.hidden = false;
+        }
+
+        // Serve from cache when fresh; skip the network call entirely.
+        try {
+            var cached = JSON.parse(localStorage.getItem(STORAGE_KEY));
+            if (cached && Date.now() - cached.t < TTL) {
+                show(cached);
+                return;
+            }
+        } catch (e) {
+            /* corrupted cache entry; fall through to fetch */
+        }
+
+        fetch(API_URL)
+            .then(function (res) {
+                if (!res.ok) throw new Error("Open-Meteo request failed");
+                return res.json();
+            })
+            .then(function (json) {
+                var cur = json.current;
+                var data = {
+                    t: Date.now(),
+                    temp: cur.temperature_2m,
+                    code: cur.weather_code,
+                    isDay: cur.is_day === 1,
+                };
+                try {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                } catch (e) {
+                    /* storage unavailable; just render without caching */
+                }
+                show(data);
+            })
+            .catch(function () {
+                // Fail silently: the footer weather stays hidden.
+            });
+    })();
+</script>

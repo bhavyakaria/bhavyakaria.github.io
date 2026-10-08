@@ -4,6 +4,9 @@ on:
   # Trigger the workflow every time you push to the `main` branch
   push:
     branches: [ master ]
+  # Refresh the build-time visitor count weekly even without content changes
+  schedule:
+    - cron: '0 0 * * 0'
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
@@ -38,6 +41,8 @@ jobs:
     # Not using npm? Change `npm run build` to `yarn build` or `pnpm run build`
     - name: Build Astro
       run: pnpm run build --if-present
+      env:
+        UMAMI_API_KEY: ${{ secrets.UMAMI_API_KEY }}
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3

@@ -1,0 +1,210 @@
+---
+// Command palette (Alfred/Spotlight style), opened with Ctrl/Cmd + K.
+// Commands are static — the site is fully SSG, so every target is known at
+// build time. Styled with existing theme tokens; interaction sounds come
+// from the global click delegation in /ui-sound.js (rows are real <a>/<button>).
+import { getCollection } from "astro:content";
+
+const RESUME_URL =
+    "https://drive.google.com/file/d/1uZXjuOaq9yBQbSqIWppGzVVt5CN9n9no/view?usp=sharing";
+
+const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const commands = [
+    { label: "Home", hint: "/", href: "/" },
+    { label: "Open Source", hint: "/#open-source", href: "/#open-source" },
+    { label: "StackOverflow", hint: "/#stackoverflow", href: "/#stackoverflow" },
+    { label: "Blog", hint: "/blog/", href: "/blog/" },
+    { label: "Projects", hint: "/projects", href: "/projects" },
+    { label: "Resume", hint: "external", href: RESUME_URL, external: true },
+    { label: "Toggle theme", hint: "action", action: "theme" },
+    ...posts.map((p) => ({
+        label: `Blog · ${p.data.title}`,
+        hint: p.data.description,
+        href: `/blog/${p.slug}`,
+    })),
+];
+---
+
+<div
+    id="command-palette"
+    class="hidden fixed inset-0 z-50"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Command palette"
+>
+    <div id="palette-backdrop" class="absolute inset-0 bg-black/40"></div>
+    <div
+        class="absolute top-[15%] left-1/2 -translate-x-1/2 w-[min(36rem,calc(100vw_-_2rem))] bg-surface border border-b-color/30 shadow-2xl"
+    >
+        <div class="flex items-center gap-3 border-b border-b-color/15 px-4">
+            <span class="text-t-primary/40 select-none">›</span>
+            <input
+                id="palette-input"
+                type="text"
+                placeholder="Search pages and posts…"
+                autocomplete="off"
+                spellcheck="false"
+                class="w-full bg-transparent py-3 text-sm text-t-primary outline-none placeholder:text-t-primary/30"
+            />
+            <kbd class="text-xs text-t-primary/40 select-none shrink-0">esc</kbd>
+        </div>
+        <ul
+            id="palette-results"
+            role="listbox"
+            class="max-h-80 overflow-y-auto py-2 text-sm"
+        >
+        </ul>
+    </div>
+</div>
+
+<script define:vars={{ commands }}>
+    const palette = document.getElementById("command-palette");
+    const input = document.getElementById("palette-input");
+    const list = document.getElementById("palette-results");
+    const backdrop = document.getElementById("palette-backdrop");
+    const trigger = document.getElementById("palette-trigger");
+
+    let open = false;
+    let items = [];
+    let selected = 0;
+    let lastFocus = null;
+
+    // Nav hint: ⌘K on macOS, Ctrl K elsewhere.
+    if (trigger) {
+        trigger.textContent = /Mac|iPhone|iPad/.test(navigator.platform)
+            ? "\u2318K"
+            : "Ctrl K";
+    }
+
+    function render(query) {
+        const q = query.trim().toLowerCase();
+        items = commands.filter(
+            (c) =>
+                !q ||
+                `${c.label} ${c.hint || ""} ${c.href || ""}`
+                    .toLowerCase()
+                    .includes(q),
+        );
+        selected = 0;
+        list.replaceChildren();
+
+        if (items.length === 0) {
+            const li = document.createElement("li");
+            li.className = "px-4 py-3 text-t-primary/40";
+            li.textContent = "No matches";
+            list.appendChild(li);
+            return;
+        }
+
+        items.forEach((cmd, i) => {
+            const li = document.createElement("li");
+            li.setAttribute("role", "option");
+            li.className =
+                "flex items-baseline justify-between gap-4 px-4 py-2 cursor-pointer";
+
+            if (cmd.action === "theme") {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "text-left grow";
+                btn.textContent = cmd.label;
+                // Reuse the real theme toggle: it flips data-theme, persists,
+                // and its click plays the right sound via ui-sound.js.
+                btn.addEventListener("click", () => {
+                    document.getElementById("theme-toggle")?.click();
+                    close();
+                });
+                li.appendChild(btn);
+            } else {
+                const a = document.createElement("a");
+                a.href = cmd.href;
+                a.className = "grow";
+                if (cmd.external) {
+                    a.target = "_blank";
+                    a.rel = "noopener noreferrer";
+                }
+                a.textContent = cmd.label;
+                li.appendChild(a);
+            }
+
+            const hint = document.createElement("span");
+            hint.className =
+                "text-xs text-t-primary/40 truncate max-w-[45%] shrink-0";
+            hint.textContent = cmd.hint || "";
+            li.appendChild(hint);
+
+            li.addEventListener("mouseenter", () => setSelected(i));
+            list.appendChild(li);
+        });
+
+        setSelected(0);
+    }
+
+    function setSelected(i) {
+        if (items.length === 0) return;
+        selected = i;
+        [...list.children].forEach((el, j) => {
+            el.classList.toggle("bg-t-accent/10", j === i);
+            el.classList.toggle("text-t-accent", j === i);
+        });
+        list.children[i]?.scrollIntoView({ block: "nearest" });
+    }
+
+    function openPalette() {
+        if (open) return;
+        open = true;
+        lastFocus = document.activeElement;
+        palette.classList.remove("hidden");
+        input.value = "";
+        render("");
+        input.focus();
+    }
+
+    function close() {
+        if (!open) return;
+        open = false;
+        palette.classList.add("hidden");
+        lastFocus?.focus();
+        lastFocus = null;
+    }
+
+    document.addEventListener("keydown", (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+            e.preventDefault();
+            open ? close() : openPalette();
+            return;
+        }
+        if (!open) return;
+        switch (e.key) {
+            case "Escape":
+                e.preventDefault();
+                close();
+                break;
+            case "Tab":
+                // Lite focus trap: keep the search input focused.
+                e.preventDefault();
+                input.focus();
+                break;
+            case "ArrowDown":
+                e.preventDefault();
+                setSelected((selected + 1) % items.length);
+                break;
+            case "ArrowUp":
+                e.preventDefault();
+                setSelected((selected - 1 + items.length) % items.length);
+                break;
+            case "Enter":
+                e.preventDefault();
+                // Click the real link/button: default navigation proceeds and
+                // ui-sound.js plays the right tick.
+                list.children[selected]?.querySelector("a, button")?.click();
+                break;
+        }
+    });
+
+    input.addEventListener("input", () => render(input.value));
+    backdrop.addEventListener("click", close);
+    trigger?.addEventListener("click", openPalette);
+</script>

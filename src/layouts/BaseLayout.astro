@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import CommandPalette from "../components/CommandPalette.astro";
 import Weather from "../components/Weather.astro";
+import { getVisitorCount } from "../lib/umami";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 
 const {
@@ -9,6 +10,9 @@ const {
     description = SITE_DESCRIPTION,
     active = "",
 } = Astro.props;
+
+// Baked in at build time from Umami Cloud (null locally / without key).
+const visitorCount = await getVisitorCount();
 ---
 
 <!doctype html>
@@ -137,7 +141,18 @@ const {
             <footer
                 class="mt-24 pt-8 border-t border-b-color/15 text-sm text-t-primary/40 flex items-center justify-between gap-4"
             >
-                Personal site of Bhavya Karia<Weather />
+                <span>Personal site of Bhavya Karia</span>
+                <span class="flex items-center gap-3">
+                    {
+                        visitorCount !== null && (
+                            <span title="All-time unique visitors (Umami)">
+                                👁 {visitorCount.toLocaleString("en-US")}{" "}
+                                visitors
+                            </span>
+                        )
+                    }
+                    <Weather />
+                </span>
             </footer>
         </div>
         <CommandPalette />

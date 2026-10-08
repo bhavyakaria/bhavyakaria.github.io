@@ -27,9 +27,10 @@ npm run dev
 
 ## Tech Stack
 
-- [Astro](https://astro.build)
-- [tailwindcss](https://tailwindcss.com/)
-- [DaisyUI](https://daisyui.com/)
+- [Astro](https://astro.build) – Static-first SSG for fast, zero-JS portfolio pages.
+- [tailwindcss](https://tailwindcss.com/) – Utility-first CSS for rapid, consistent styling.
+- [DaisyUI](https://daisyui.com/) – Prebuilt accessible components on Tailwind, less custom CSS.
+- [Umami](https://umami.is/) – Privacy-friendly analytics for pageviews without cookies.
 
 ## Project Structure
 

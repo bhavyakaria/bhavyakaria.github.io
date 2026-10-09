@@ -49,13 +49,17 @@
 
         function show(data) {
             var info = weatherInfo(data.code, data.isDay);
+            var celsius = Math.round(data.temp);
+            var fahrenheit = Math.round((data.temp * 9) / 5 + 32);
             el.textContent =
                 info[0] +
                 " " +
                 info[1] +
                 ", " +
-                Math.round(data.temp) +
-                "°C";
+                celsius +
+                "°C (" +
+                fahrenheit +
+                "°F)";
             el.title = "Weather data by Open-Meteo";
             el.hidden = false;
         }

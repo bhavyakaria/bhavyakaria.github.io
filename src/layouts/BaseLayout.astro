@@ -15,6 +15,7 @@ const {
 <html lang="en" data-theme="dark">
     <head>
         <BaseHead title={title} description={description} />
+        <link rel="preload" href="/profile-sprite.webp" as="image" />
         <script is:inline>
             (function () {
                 var theme = localStorage.getItem("theme") || "dark";
@@ -68,13 +69,17 @@ const {
                     </div>
                     <a
                         href="/"
+                        data-mascot
                         class="inline-block rounded-full ring-2 ring-t-accent ring-offset-[6px] ring-offset-surface"
+                        aria-label="Bhavya Karia — home"
                     >
-                        <img
-                            src="/profile.jpg"
-                            alt="Bhavya Karia"
-                            class="w-40 h-40 rounded-full object-cover"
-                        />
+                        <span
+                            data-frame
+                            role="img"
+                            aria-label="Bhavya Karia avatar"
+                            class="block w-40 h-40 rounded-full"
+                            style="background-image: url(/profile-sprite.webp); background-size: 300% 300%; background-position: 50% 50%; background-repeat: no-repeat; background-color: #e8e6e3;"
+                        ></span>
                     </a>
                 </div>
                 <nav class="mt-12 text-md">
@@ -127,6 +132,79 @@ const {
                         "light"
                             ? "\u25D0"
                             : "\u25D1";
+                </script>
+                <script is:inline>
+                    (function () {
+                        var host = document.querySelector("[data-mascot]");
+                        if (!host) return;
+                        var frame = host.querySelector("[data-frame]");
+                        if (!frame) return;
+                        var NEUTRAL = 4;
+                        var ORDER = [5, 8, 7, 6, 3, 0, 1, 2];
+                        var STEP = (Math.PI * 2) / ORDER.length;
+                        var HYST = 0.12;
+                        var DEAD = 70;
+                        var set = function (i) {
+                            frame.style.backgroundPosition =
+                                (i % 3) * 50 +
+                                "% " +
+                                Math.floor(i / 3) * 50 +
+                                "%";
+                        };
+                        var norm = function (a) {
+                            return Math.atan2(Math.sin(a), Math.cos(a));
+                        };
+                        set(NEUTRAL);
+                        if (
+                            !window.matchMedia("(hover: hover) and (pointer: fine)")
+                                .matches
+                        )
+                            return;
+                        if (
+                            window.matchMedia("(prefers-reduced-motion: reduce)")
+                                .matches
+                        )
+                            return;
+                        var current = -1;
+                        var pos = null;
+                        var scheduled = 0;
+                        var update = function () {
+                            scheduled = 0;
+                            if (!pos) return;
+                            var r = host.getBoundingClientRect();
+                            var dx = pos.x - (r.left + r.width / 2);
+                            var dy = pos.y - (r.top + r.height / 2);
+                            if (Math.hypot(dx, dy) < DEAD) {
+                                current = -1;
+                                set(NEUTRAL);
+                                return;
+                            }
+                            var ang = Math.atan2(dy, dx);
+                            if (
+                                current !== -1 &&
+                                Math.abs(norm(ang - current * STEP)) <
+                                    STEP / 2 + HYST
+                            )
+                                return;
+                            current =
+                                (Math.round(ang / STEP) + ORDER.length) %
+                                ORDER.length;
+                            set(ORDER[current]);
+                        };
+                        var kick = function () {
+                            if (!scheduled)
+                                scheduled = requestAnimationFrame(update);
+                        };
+                        window.addEventListener(
+                            "pointermove",
+                            function (e) {
+                                pos = { x: e.clientX, y: e.clientY };
+                                kick();
+                            },
+                            { passive: true }
+                        );
+                        window.addEventListener("scroll", kick, { passive: true });
+                    })();
                 </script>
             </header>
 
